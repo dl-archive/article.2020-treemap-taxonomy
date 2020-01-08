@@ -1,0 +1,58 @@
+
+\newcommand{\pipelineoffset}{2.5pt}
+\newcommand{\pipelinecorners}{0pt}
+
+\tikzset{
+	every stage/.style = {rounded corners=\pipelinecorners},
+	stage/.style = {rectangle,very thin,draw=gray!50!black,fill=white,
+		minimum width = 45pt,
+        minimum height= 2.2\baselineskip,
+		inner sep=\pipelineoffset,
+		align=center,every stage},
+	stagev/.style = {rectangle,very thin,draw=gray!50!black,fill=white,
+		minimum width = 0.9\linewidth,
+		text depth=0pt,
+		inner sep=\pipelineoffset,
+		every stage},
+	every phase/.style = {rounded corners=\pipelinecorners},
+	phase/.style = {rectangle,minimum height=2.5\baselineskip,minimum width=60pt,very thin,draw=white!00!gray,fill=white,inner sep=\pipelineoffset,every phase},
+	phasev/.style = {rectangle,very thin,draw=white!00!gray,fill=gray!8,inner sep=\pipelineoffset,every phase},
+	phasename/.style = {label={[inside,inner sep=\pipelineoffset,text depth=0pt]north east:#1}},
+	every pipeline/.style = {rounded corners=\pipelinecorners},
+	pipelinename/.style = {label={[inside,inner sep=\pipelineoffset,text depth=0pt]north west:#1}},
+	pipeline/.style = {rectangle,very thin,draw=white!00!gray,inner sep=\pipelineoffset,minimum height=1mm,every pipeline},
+	every data/.style = {},
+	data/.style = {circle,inner sep=0pt,minimum size=8pt,very thin,draw=black,fill=gray!60!black,every data},
+	every smalldata/.style = {},
+	smalldata/.style = {circle,inner sep=0pt,minimum size=6pt,very thin,draw=black,fill=gray!60!black,every smalldata}
+}
+
+\newcommand{\connectfromdata}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(-60:5.5pt) arc (-60:60:5.5pt) node[pos=0.5] (center#1) {};
+	\draw[draw=black,very thin] (center#1.center) -- (#2);
+}
+\newcommand{\connecttodata}[2]{
+	\draw[draw=black,very thin] (#1) -- (#2.west);
+}
+\newcommand{\connectfromdatav}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(-150:5.5pt) arc (-150:-30:5.5pt) node[pos=0.5] (center#1) {};
+	\draw[draw=black,very thin] (center#1.center) -- (center#1.center |- #2.north);
+}
+\newcommand{\connecttodatav}[2]{
+	\draw[draw=black,very thin] (#1.south -| #2.center) -- (#2.north);
+}
+\newcommand{\connectionN}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(30:5.5pt) arc (30:150:5.5pt) node[pos=0.5] (#2) {};
+}
+\newcommand{\connectionSmallN}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(30:4.5pt) arc (30:150:4.5pt) node[pos=0.5] (#2) {};
+}
+\newcommand{\connectionS}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(-150:5.5pt) arc (-150:-30:5.5pt) node[pos=0.5] (#2) {};
+}
+\newcommand{\connectionW}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(120:5.5pt) arc (120:240:5.5pt) node[pos=0.5] (#2) {};
+}
+\newcommand{\connectionE}[2]{
+	\draw[draw=black,very thin] (#1.center) ++(-60:5.5pt) arc (-60:60:5.5pt) node[pos=0.5] (#2) {};
+}

@@ -1,0 +1,91 @@
+
+% !TeX root = ../treemap-taxonomy-ivapp2020.tex
+
+{
+	\footnotesize
+	%\scriptsize
+	%\linespread{0.8}
+    \centering
+    \begin{tikzpicture}
+    % Stages
+    \begin{scope}[node distance = 7pt]
+    \node [data] (problemdata) {};
+    %
+    \node [stage] (analysis) [right=of problemdata,xshift=2pt] {Analysis};
+    \node [data] (visualizationdata) [right=of analysis] {};
+    %
+    \node [stage] (filtering) [right=of visualizationdata,text width=55pt] {Preprocessing \& Filtering};
+    %
+    \node [data] (focustree) [right=of filtering,yshift=10pt] {};
+    \node [data] (focusdata) [right=of filtering,yshift=-10pt] {};
+    %
+    \node [stage] (layouting) [right=of focusdata,yshift=10pt,xshift=2pt] {Layouting};
+    \node [data] (layout) [right=of layouting] {};
+    
+    \node [stage] (geometrycreation) [right=of layout,text width=40pt] {Geometry Creation};
+    \node [data] (geometry) [right=of geometrycreation,xshift=2pt] {};
+    \node [stage] (rendering) [right=of geometry] {Rendering};
+    %
+    \node [data] (image) [right=of rendering,xshift=2pt] {};
+    \end{scope}
+    % Connections
+    \connectfromdata{problemdata}{analysis};
+    \connecttodata{analysis}{visualizationdata};
+    %
+    \connectfromdata{visualizationdata}{filtering};
+    \connecttodata{filtering}{focusdata};
+    \connecttodata{filtering}{focustree};
+    %
+    \connectfromdata{focusdata}{layouting};
+    \connectfromdata{focustree}{layouting};
+    \connecttodata{layouting}{layout};
+    %
+    \connectfromdata{layout}{geometrycreation};
+    \connecttodata{geometrycreation}{geometry};
+    %
+    \connectfromdata{geometry}{rendering};
+    \connecttodata{rendering}{image};
+    %
+    % Labels
+    %
+    \node (datalabel) [above=24pt of problemdata] {};
+    \node at (datalabel.west) [text depth=0pt,anchor=west,inner sep=0pt] {Problem Data};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (problemdata) -- (datalabel);
+    %
+    \node (visdatalabel) [below=10pt of visualizationdata] {};
+    \node at (visdatalabel) [text depth=0pt] {Visualization Data};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (visualizationdata) -- (visdatalabel);
+    %
+    \node (treelabel) [above=14pt of focustree] {};
+    \node at (treelabel) [text depth=0pt] {Topology};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (focustree) -- (treelabel);
+    %
+    \node (attributeslabel) [below=14pt of focusdata] {};
+    \node at (attributeslabel) [text depth=0pt] {Attributes};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (focusdata) -- (attributeslabel);
+    %
+    \node (layoutlabel) [below=10pt of layout] {};
+    \node at (layoutlabel) [text depth=0pt] {Layout};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (layout) -- (layoutlabel);
+    %
+    \node (geometrylabel) [below=24pt of geometry] {};
+    \node at (geometrylabel) [text depth=0pt] {Geometry};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (geometry) -- (geometrylabel);
+    %
+    \node (imagelabel) [above=24pt of image] {};
+    \node at (imagelabel.east) [text depth=0pt,anchor=east,inner sep=0pt] {Image};
+    \draw [draw=black,very thin,shorten >= 1pt,shorten <= 3pt] (image) -- (imagelabel);
+    %
+    % Phases
+    %
+    \begin{scope}[on background layer]
+    %
+    %\node [phase,phasename=Preprocessing] (preprocessing) [fit={(analysis)(filtering)($(analysis.north)+(0pt,1.2\baselineskip)$)($(analysis.south)-(0pt,1.2\baselineskip)$)}] {};
+    \node [phase,phasename=Mapping] (mapping) [fit={(layouting)(geometrycreation)($(layouting.north)+(0pt,1.2\baselineskip)$)($(layouting.south)-(0pt,1.2\baselineskip)$)}] {};
+    %\node [phase,phasename=Image Synthesis] (imagesynthesis) [fit={(rendering)($(rendering.north)+(0pt,1.2\baselineskip)$)($(rendering.south)-(0pt,1.2\baselineskip)$)}] {};
+    % Pipeline
+    \node [pipeline] (pipeline) [fit={(analysis.west)(rendering.east)(mapping.north)(mapping.south)}] {};
+    \end{scope}
+    %
+    \end{tikzpicture}
+}

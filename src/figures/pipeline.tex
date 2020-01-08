@@ -1,0 +1,62 @@
+
+
+{
+	\small
+    \centering
+    \begin{tikzpicture}
+    \begin{scope}[node distance = 6pt]
+    \node [data] (problemdata) {};
+    \node [stagev] (analysis) [below=of problemdata,yshift=-1.2\baselineskip] {Analysis};
+    \node [data] (visualizationdata) [below=of analysis] {};
+    \node [stagev] (filtering) [below=of visualizationdata] {Preprocessing \& Filtering};
+    \node [data] (focustree) [below=of filtering,xshift=10pt] {};
+    \node [data] (focusdata) [below=of filtering,xshift=-10pt] {};
+    \node [stagev] (layouting) [below=of focusdata,xshift=10pt,yshift=-1.2\baselineskip] {Layouting};
+    \node [data] (layout) [below=of layouting] {};
+    
+    \node [stagev] (geometrycreation) [below=of layout] {Geometry Creation};
+    \node [data] (geometry) [below=of geometrycreation] {};
+    \node [stagev] (rendering) [below=of geometry,yshift=-1.1\baselineskip] {Rendering};
+    \node [data] (image) [below=of rendering,yshift=-0.1\baselineskip] {};
+    \end{scope}
+    \connectfromdatav{problemdata}{analysis};
+    \connecttodatav{analysis}{visualizationdata};
+    \connectfromdatav{visualizationdata}{filtering};
+    \connecttodatav{filtering}{focusdata};
+    \connecttodatav{filtering}{focustree};
+    \connectfromdatav{focusdata}{layouting};
+    \connectfromdatav{focustree}{layouting};
+    \connecttodatav{layouting}{layout};
+    \connectfromdatav{layout}{geometrycreation};
+    \connecttodatav{geometrycreation}{geometry};
+    \connectfromdatav{geometry}{rendering};
+    \connecttodatav{rendering}{image};
+    \node (datalabel) [left=20pt of problemdata] {};
+    \node at (datalabel.east) [text depth=0pt,xshift=0pt,anchor=east] {Problem Data};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (problemdata) -- (datalabel);
+    \node (visdatalabel) [left=10pt of visualizationdata] {};
+    \node at (visdatalabel.east) [text depth=0pt,xshift=0pt,anchor=east,text width=70pt,align=right] {Visualization Data};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (visualizationdata) -- (visdatalabel);
+    \node (treelabel) [right=10pt of focustree] {};
+    \node at (treelabel.west) [text depth=0pt,xshift=0pt,anchor=west] {Topology};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (focustree) -- (treelabel);
+    \node (attributeslabel) [left=10pt of focusdata] {};
+    \node at (attributeslabel.east) [text depth=0pt,xshift=0pt,anchor=east] {Attributes};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (focusdata) -- (attributeslabel);
+    \node (layoutlabel) [left=10pt of layout] {};
+    \node at (layoutlabel.east) [text depth=0pt,xshift=0pt,anchor=east] {Layout};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (layout) -- (layoutlabel);
+    \node (geometrylabel) [left=10pt of geometry] {};
+    \node at (geometrylabel.east) [text depth=0pt,xshift=0pt,anchor=east] {Geometry};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (geometry) -- (geometrylabel);
+    \node (imagelabel) [left=20pt of image] {};
+    \node at (imagelabel.east) [text depth=0pt,xshift=0pt,anchor=east] {Image};
+    \draw [draw=black,very thin,shorten >= 0pt,shorten <= 3pt] (image) -- (imagelabel);
+    \begin{scope}[on background layer]
+    \node [phasev,phasename=Preprocessing] (preprocessing) [fit={(analysis)(filtering)($(analysis.north)+(0pt,1.0\baselineskip)$)}] {};
+    \node [phasev,phasename=Mapping] (mapping) [fit={(layouting)(geometrycreation)($(layouting.north)+(0pt,1.0\baselineskip)$)}] {};
+    \node [phasev,phasename=Image Synthesis] (imagesynthesis) [fit={(rendering)($(rendering.north)+(0pt,1.0\baselineskip)$)}] {};
+    \node [pipeline] (pipeline) [fit={(preprocessing.north)(preprocessing.west)(imagesynthesis.east)(imagesynthesis.south)}] {};
+    \end{scope}
+    \end{tikzpicture}
+}

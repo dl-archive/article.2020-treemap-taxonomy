@@ -1,0 +1,188 @@
+\useinnertheme{rectangles}
+
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage[labelformat=empty,textfont=footnotesize,justification=raggedright,compatibility=false, skip=4pt]{caption}
+\usepackage[labelformat=empty,textfont=footnotesize,justification=raggedright]{subcaption}
+\usepackage{tikz}
+\usepackage{environ}
+\usepackage{charter}
+\usetikzlibrary{spy,calc,matrix}
+\usepackage{csquotes}
+\usepackage{listings}
+\usepackage{datetime}
+\usepackage{fp}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{varwidth}
+\usepackage{ragged2e}
+
+\deftranslation[to=German]{Table of Contents}{Inhaltsverzeichnis}
+\deftranslation[to=German]{Hasso Plattner Institute}{Hasso-Plattner-Institut}
+\deftranslation[to=German]{Chapter}{Kapitel}
+
+\renewcommand<>{\emph}[1]{\textbf{#1}}
+\newcommand{\deemph}[1]{\textcolor{gray}{#1}}
+
+\setbeamercovered{transparent}
+
+\let\emph\relax %
+\DeclareTextFontCommand{\emph}{\em} %
+
+\mode<presentation>
+\beamer@suppressreplacementstrue
+
+\definecolor{hpi@grey}  {RGB}{ 90, 96,101}
+\definecolor{hpi@red}   {RGB}{177,  6, 58}
+\definecolor{hpi@yellow}{RGB}{246,168,  0}
+\definecolor{hpi@orange}{RGB}{221, 97,  8}
+\definecolor{hpi@blue}  {RGB}{  0,122,158}
+
+\setbeamercolor{postit}{fg=black,bg=white}
+
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{subtitle}{fg=hpi@grey}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{frametitle}{fg=hpi@grey}
+\setbeamercolor{footline}{fg=hpi@grey}
+
+\setbeamercolor{normal text}{fg=black}
+
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{subsubsection in toc}{fg=black}
+\setbeamercolor{background canvas}{bg=}
+
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\Large}
+\setbeamerfont{framesubtitle}{size=\scriptsize}
+\setbeamerfont{footline}{size=\tiny}
+
+\pgfdeclareimage[height=0.66cm]{hpi@logo_black}{logos/hpi_logo_black}
+\pgfdeclareimage[height=0.66cm]{hpi@logo_gray}{logos/hpi_logo_gray}
+\pgfdeclareimage[height=0.66cm]{hpi@logo_cmyk}{logos/hpi_logo_cmyk}
+\pgfdeclareimage[height=0.66cm]{uni@logo_black}{logos/uni_logo_black}
+\pgfdeclareimage[height=0.66cm]{uni@logo_gray}{logos/uni_logo_black}
+\pgfdeclareimage[height=0.66cm]{uni@logo_cmyk}{logos/uni_logo_cmyk}
+
+\def\logo{\pgfuseimage{uni@logo_cmyk}\hspace{0.7em}\pgfuseimage{hpi@logo_cmyk}}
+
+\defbeamertemplate*{title page}{cgs}[1][]
+{
+	\center
+	\hfill\logo\par
+	\vspace{-0.66cm}
+	\usebeamerfont{title}\inserttitle\par
+	\smallskip
+	\usebeamerfont{author}\usebeamercolor[fg]{title}\insertauthor\par
+	\smallskip
+	\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertinstitute\par
+	\bigskip
+	\inserttitlegraphic\par
+	\bigskip
+	\smallskip
+	\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+	\usebeamerfont{date}\insertdate\par
+}
+
+\defbeamertemplate*{frametitle}{cgs}
+{
+	\begin{beamercolorbox}[left, leftskip=0.5cm, ht=8mm, dp=1mm, wd=\paperwidth]{frametitle}
+		\usebeamerfont{frametitle}\insertframetitle{}
+	\end{beamercolorbox}
+	\nointerlineskip
+	\vspace{-8mm}
+	\begin{beamercolorbox}[right, rightskip=0.5cm, ht=8mm, dp=1mm, wd=\paperwidth]{}
+		\logo
+	\end{beamercolorbox}
+}
+
+\defbeamertemplate*{footline}{cgs}
+{
+\hbox{%
+	\begin{beamercolorbox}[wd=\paperwidth, ht=0.5mm, dp=.2mm]{topfootline}%
+	\end{beamercolorbox}%
+}
+\hbox{%
+	\begin{beamercolorbox}[left, leftskip=0.5cm, rightskip=0.5cm, dp=1mm, wd=\paperwidth]{footline}%
+		\insertframenumber \quad \insertshorttitle~\ifx\insertsectionhead\empty\else|~\insertsectionhead\fi
+		\hfill
+		\insertsubtitle \quad \insertshortdate\par
+	\end{beamercolorbox}%
+}
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{itemize items}[circle]
+\setbeamercolor{itemize item}{fg=hpi@blue}
+\setbeamercolor{itemize subitem}{fg=hpi@blue}
+\setbeamercolor{item projected}{bg=black}
+\setbeamertemplate{enumerate items}[default]
+\setbeamercolor{local structure}{fg=hpi@blue}
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\newcommand\pro{\item[\textbf{\textcolor{hpi@blue}{$+$}}]}
+\newcommand\con{\item[\textbf{\textcolor{hpi@red}{$-$}}]}
+
+\definecolor{codeKeyword} {rgb}{0.00, 0.00, 1.00}
+\definecolor{codeComment} {rgb}{0.00, 0.50, 0.00}
+\definecolor{codeBkgnd}   {rgb}{0.94, 0.94, 0.94}
+\definecolor{codeFrame}   {rgb}{0.98, 0.98, 0.98}
+
+\definecolor{definition}  {HTML}{F4F4F4}
+
+\input{lstset-cpp}
+\input{lstset-bash}
+\input{lstset-bashscript}
+\input{lstset-cmake}
+\input{commands/_twocolumns}
+\input{commands/_twocolumnsfill}
+\input{commands/_slidetitle}
+
+\input{commands/_fullsizegraphic}
+\input{commands/_slidefullsizegraphic}
+\input{commands/_slidesectionwithgraphic}
+
+\input{commands/_listingcpp}
+\input{commands/_listingcout}
+\input{commands/_listingcpptiny}
+\input{commands/_listingcouttiny}
+\input{commands/_listingcppcout}
+\input{commands/_listingcppcouttiny}
+\input{commands/_listingcpptwocolumns}
+\input{commands/_listingcppcouttwocolumns}
+\input{commands/_listingcppcouttwocolumnstiny}
+
+\input{commands/_slidefooter}
+\input{commands/_slidevfill}
+
+\input{commands/signed}
+\input{commands/aquote}
+\input{commands/slidetableofcontents}
+\input{commands/slidegraphic}
+\input{commands/slidesourcecode}
+\input{commands/onetotwo}
+\input{commands/slideonetotwo}
+\input{commands/onetoone}
+\input{commands/slideonetoone}
+\input{commands/slideonetoonegraphics}
+\input{commands/squarecells}
+\input{commands/definition}
+\input{commands/onetoonetoone}
+\input{commands/slideonetoonetoone}
+\input{commands/slideonetoonetoonegraphics}
+\input{commands/twotoone}
+\input{commands/slidetwotoone}
+\input{commands/zoom}
+\input{commands/videoyoutube}
+\input{commands/videovimeo}
+\input{commands/timeline}
+\input{commands/fakeitem}
+\input{commands/listingonetoone}

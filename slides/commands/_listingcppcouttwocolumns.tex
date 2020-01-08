@@ -1,0 +1,9 @@
+\newcommand{\listingcppcouttwocolumns}[3][]{%
+	\FPeval{\fl}{clip(#3+1)}%
+	\twocolumnsfill{0.5}{%
+		\lstinputlisting[lastline=#3,#1]{#2.cpp}
+	}{%
+		\lstinputlisting[firstline=\fl,firstnumber=last,belowskip=0pt,#1]{#2.cpp}
+		\lstinputlisting[language=Bash]{#2.cout}
+	}%
+}

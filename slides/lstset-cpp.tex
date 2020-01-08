@@ -1,0 +1,63 @@
+
+
+\usepackage{accsupp}
+
+\definecolor{msvc_keyword}   {HTML}{0000FF}
+\definecolor{msvc_comment}   {HTML}{008000}
+\definecolor{msvc_background}{HTML}{F4F4F4}
+\definecolor{msvc_frame}     {HTML}{EAEAEA}
+\definecolor{msvc_linenumber}{HTML}{2B91AF}
+\definecolor{msvc_string}    {HTML}{A31515}
+
+\definecolor{msvc_directives}{HTML}{808080}
+\definecolor{msvc_operators} {HTML}{2B91AF}
+\definecolor{msvc_stl}       {HTML}{2B91AF}
+
+\newcommand{\noncopynumber}[1]{%
+    \BeginAccSupp{method=escape,ActualText={}}%
+    #1%
+    \EndAccSupp{}%
+}
+
+\makeatletter
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+\makeatother
+
+\lstset{
+	language         = C++
+,   defaultdialect   = [11]C++
+,   basicstyle       =
+    \ttfamily
+    \lst@ifdisplaystyle\scriptsize\fi %
+,   backgroundcolor  = \color{msvc_background}
+,   rulecolor        = \color{msvc_frame}
+,   keywordstyle     = \lst@ifdisplaystyle\color{msvc_keyword}\fi
+,   commentstyle     = \lst@ifdisplaystyle\color{msvc_comment}\fi
+,   stringstyle      = \lst@ifdisplaystyle\color{msvc_string}\fi
+,   showstringspaces = false
+,	directives       = { define, undef, include, if, ifdef, ifndef, else, elif, endif, line, error, pragma }
+,	directivestyle   = \lst@ifdisplaystyle\color{msvc_directives}\fi
+,	keywords         = [2]{ nullptr, numeric_limits, allocator, auto_ptr, basic_filebuf, basic_fstream, basic_ifstream, basic_iostream, basic_istream, basic_istringstream, basic_ofstream, basic_ostream, basic_ostringstream, basic_streambuf, basic_string, basic_stringbuf, basic_stringstream, binary_compose, binder1st, binder2nd, bitset, char_traits, char_type, const_mem_fun1_t, const_mem_fun_ref1_t, const_mem_fun_ref_t, const_mem_fun_t, const_pointer, const_reference, container_type, deque, difference_type, div_t, double_t, filebuf, first_type, float_denorm_style, float_round_style, float_t, fstream, gslice_array, ifstream, imaxdiv_t, indirect_array, int_type, ios_base, iostream, istream, istringstream, istrstream, iterator_traits, key_compare, key_type, ldiv_t, list, lldiv_t, map, mapped_type, mask_array, mem_fun1_t, mem_fun_ref1_t, mem_fun_ref_t, mem_fun_t, multimap, multiset, nothrow_t, off_type, ofstream, ostream, ostringstream, ostrstream, pair, pointer, pointer_to_binary_function, pointer_to_unary_function, pos_type, priority_queue, queue, reference, second_type, sequence_buffer, set, sig_atomic_t, size_type, slice_array, stack, stream, streambuf, string, stringbuf, stringstream, strstream, strstreambuf, temporary_buffer, test_type, time_t, tm, traits_type, type_info, u16string, u32string, unary_compose, unary_negate, valarray, value_compare, value_type, vector, wfilebuf, wfstream, wifstream, wiostream, wistream, wistringstream, wofstream, wostream, wostringstream, wstreambuf, wstring, wstringbuf, wstringstream, mbstate_t, wctrans_t, wctype_t, wint_t, nullptr_t max_align_t, type_index, is_void, is_integral, is_floating_point, is_array, is_enum, is_union, is_class, is_function, is_pointer, is_lvalue_reference, is_rvalue_reference, is_member_object_pointer, is_member_function_pointer, is_fundamental, is_arithmetic, is_scalar, is_object, is_compound, is_reference, is_member_pointer, is_const, is_volatile, is_trivial, is_trivially_copyable, is_standard_layout, is_pod, is_literal_type, is_empty, is_polymorphic, is_abstract, is_signed, is_unsigned, is_constructible, is_trivially_constructible, is_nothrow_constructible, is_default_constructible, is_trivially_default_constructible, is_nothrow_default_constructible, is_copy_constructible, is_trivially_copy_constructible, is_nothrow_copy_constructible, is_move_constructible, is_trivially_move_constructible, is_nothrow_move_constructible, is_assignable, is_trivially_assignable, is_nothrow_assignable, is_copy_assignable, is_trivially_copy_assignable, is_nothrow_copy_assignable, is_move_assignable, is_trivially_move_assignable, is_nothrow_move_assignable, is_destructible, is_trivially_destructible, alignment_of, rank, extent, is_same, is_base_of, is_convertible, remove_cv, remove_const, remove_volatile, add_cv, add_const, add_volatile, remove_reference, add_lvalue_reference, add_rvalue_reference, remove_pointer, add_pointer, make_signed, make_unsigned, remove_extent, remove_all_extents, aligned_storage, aligned_union, decay, enable_if, conditional, common_type, underlying_type, result_of, integral_constant, true_type, false_type, piecewise_construct_t, unique_ptr, shared_ptr, weak_ptr, owner_less, enable_shared_from_this, default_delete, allocator_traits, allocator_type, allocator_arg_t, uses_allocator, scoped_allocator_adaptor, pointer_safety, pointer_traits, is_bind_expression, is_placeholder, reference_wrapper, duration, system_clock, steady_clock, high_resolution_clock, time_point, tuple, tuple_size tuple_element, array, forward_list, unordered_map, unordered_set, unordered_multimap, unordered_multiset, tuple, hash, hasher, key_equal, linear_congruential_engine, mersenne_twister_engine, subtract_with_carry_engine, discard_block_engine, independent_bits_engine, shuffle_order_engine, random_device, default_random_engine, minstd_rand0, minstd_rand, mt19937, mt19937_64, ranlux24_base, ranlux48_base, ranlux24, ranlux48, knuth_b, uniform_int_distribution, uniform_real_distribution, bernoulli_distribution, binomial_distribution, negative_binomial_distribution, geometric_distribution, poisson_distribution, exponential_distribution, gamma_distribution, weibull_distribution, extreme_value_distribution, normal_distribution, lognormal_distribution, chi_squared_distribution, cauchy_distribution, fisher_f_distribution, student_t_distribution, discrete_distribution, piecewise_constant_distribution, piecewise_linear_distribution, seed_seq, wstring_convert, wbuffer_convert, codecvt_utf8, codecvt_utf16, codecvt_utf8_utf16, codecvt_mode, basic_regex, sub_match, match_results, regex_traits, regex_match regex_search regex_replace, syntax_option_type match_flag_type error_type, atomic, atomic_flag, atomic_bool, atomic_char, atomic_schar, atomic_uchar, atomic_short, atomic_ushort, atomic_int, atomic_uint, atomic_long, atomic_ulong, atomic_llong, atomic_ullong, atomic_char16_t, atomic_char32_t, atomic_wchar_t, atomic_int_least8_t, atomic_uint_least8_t, atomic_int_least16_t, atomic_uint_least16_t, atomic_int_least32_t, atomic_uint_least32_t, atomic_int_least64_t, atomic_uint_least64_t, atomic_int_fast8_t, atomic_uint_fast8_t, atomic_int_fast16_t, atomic_uint_fast16_t, atomic_int_fast32_t, atomic_uint_fast32_t, atomic_int_fast64_t, atomic_uint_fast64_t, atomic_intptr_t, atomic_uintptr_t, atomic_size_t, atomic_ptrdiff_t, atomic_intmax_t, atomic_uintmax_t, memory_order, thread, mutex, timed_mutex, recursive_mutex, recursive_timed_mutex, lock_guard, unique_lock, defer_lock_t, try_to_lock_t, adopt_lock_t, once_flag, condition_variable, condition_variable_any, promise, packaged_task, future, shared_future, future_error, ratio, yocto, zepto, atto, femto, pico, nano, micro, milli, centi, deci, deca, hecto, kilo, mega, giga, tera, peta, exa, zetta, yotta, ratio_add, ratio_subtract, ratio_multiply, ratio_divide, ratio_equal, ratio_not_equal, ratio_less, ratio_less_equal, ratio_greater, ratio_greater_equal, nanoseconds, microseconds, milliseconds, seconds, minutes, hours, dynarray, shared_mutex, shared_lock, optional, runtime_error }
+,	keywordstyle     = [2]\lst@ifdisplaystyle\color{msvc_stl}\fi
+,   morekeywords     = [1]{ noexcept }
+,	literate         = *
+			{[}{{\lst@ifdisplaystyle\color{msvc_operators}\fi{[}}}{1}
+            {]}{{\lst@ifdisplaystyle\color{msvc_operators}\fi{]}}}{1}
+,   numberbychapter  = true
+,   numbersep        =  4pt
+,   tabsize          =  4
+,   numbers          = left
+,   numberstyle      = \tiny\color{msvc_linenumber}\noncopynumber
+,   frame            = single
+,   framesep         =  0pt
+,   xleftmargin=\parindent
+,   xleftmargin      = 10pt
+,   framexleftmargin = 12pt
+,   framexrightmargin = 2pt
+,   framextopmargin  =  2pt
+,   framexbottommargin = 2pt
+,   abovecaptionskip = \medskipamount
+,   stepnumber       = 1
+,   columns          = flexible
+,   keepspaces       = true
+}

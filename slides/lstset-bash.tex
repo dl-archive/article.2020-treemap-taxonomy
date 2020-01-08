@@ -1,0 +1,36 @@
+\lstdefinelanguage{Bash}
+{
+    style=Bash
+}
+
+\definecolor{sublimeblack}{RGB}{ 39, 40, 34}
+\definecolor{sublimegray} {RGB}{173,173,166}
+\definecolor{sublimewhite}{RGB}{248,248,242}
+
+\lstdefinestyle{Bash}
+{
+    basicstyle       = 
+    \ttfamily\color{sublimewhite}
+    \lst@ifdisplaystyle\scriptsize\fi %
+,   backgroundcolor  = \color{sublimeblack}
+,   rulecolor        = \color{black}
+,   numberbychapter  = true
+,   numbersep        = 4pt
+,   tabsize          =  4          
+,   numbers          = left
+,   numberstyle      = \renewcommand{\thelstnumber}{>}\tiny\color{sublimewhite}\noncopynumber
+,   frame            = single
+,   framesep         =  2pt
+,   xleftmargin=\parindent
+,   xleftmargin      = 10pt
+,   framexleftmargin = 10pt
+,   abovecaptionskip = 0pt
+,   stepnumber       = 1
+,   columns          = flexible
+,   keepspaces       = true
+,   belowcaptionskip = 0pt
+,   belowskip        = 0pt
+,   aboveskip        = -1pt
+,   lineskip         = -1pt
+,   commentstyle     = \color{sublimegray},
+}

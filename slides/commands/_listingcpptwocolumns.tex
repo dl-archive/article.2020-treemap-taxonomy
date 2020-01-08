@@ -1,0 +1,8 @@
+\newcommand{\listingcpptwocolumns}[3][]{%
+	\FPeval{\fl}{clip(#3+1)}%
+	\twocolumnsfill{0.5}{%
+		\lstinputlisting[lastline=#3,#1]{#2.cpp}
+	}{%
+		\lstinputlisting[firstline=\fl,firstnumber=last,#1]{#2.cpp}
+	}%
+}

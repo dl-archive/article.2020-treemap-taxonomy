@@ -1,0 +1,8 @@
+\newcommand<>{\listingonetoone}[3][]{%
+	\FPeval{\fl}{clip(#3+1)}
+	\onetoone{%
+		\lstinputlisting[lastline=#3,#1]{#2}
+	}{%
+		\lstinputlisting[firstline=\fl,firstnumber=last,#1]{#2}
+	}
+}

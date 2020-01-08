@@ -1,0 +1,108 @@
+
+
+\usepackage{accsupp}
+
+\definecolor{msvc_keyword}   {HTML}{0000FF} 
+\definecolor{msvc_comment}   {HTML}{008000} 
+\definecolor{msvc_background}{HTML}{F4F4F4} 
+\definecolor{msvc_frame}     {HTML}{EAEAEA}
+\definecolor{msvc_linenumber}{HTML}{2B91AF}
+\definecolor{msvc_string}    {HTML}{A31515}
+
+\definecolor{msvc_directives}{HTML}{808080}
+\definecolor{msvc_operators} {HTML}{2B91AF}
+\definecolor{msvc_stl}       {HTML}{2B91AF}
+
+\makeatletter
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+\makeatother
+
+\lstdefinelanguage{cmake}
+{
+	style=cmake
+}
+
+\lstdefinestyle{cmake}
+{
+    basicstyle       = 
+    \ttfamily
+    \lst@ifdisplaystyle\scriptsize\fi %
+,   backgroundcolor  = \color{msvc_background}
+,   rulecolor        = \color{msvc_frame}
+,   keywordstyle     = \lst@ifdisplaystyle\color{msvc_keyword}\fi
+,   commentstyle     = \lst@ifdisplaystyle\color{msvc_comment}\fi
+,   morecomment      = [l]{\#}
+,   stringstyle      = \lst@ifdisplaystyle\color{msvc_string}\fi
+,   showstringspaces = false
+,   morestring       = [d]{"}
+,	directives       = {}
+,	directivestyle   = \lst@ifdisplaystyle\color{msvc_directives}\fi
+,	keywords         = [2]{cmake_minimum_required, set_property, set, project, option, include, get_git_head_revision,
+						string, if, endif, else, find_package, message, return, add_custom_target, add_executable, elseif,
+						add_library, target_link_libraries, target_include_directories, target_compile_definitions,
+						target_compile_options, set_target_properties, generate_export_header, write_compiler_detection_header,
+						install, get_filename_component, list, file, configure_file, function, macro, add_dependencies, endfunction,
+						add_subdirectory, add_custom_command, find_package_handle_standard_args, find_path, find_library,
+						foreach, endforeach, endmacro }
+,	keywordstyle     = [2]\lst@ifdisplaystyle\color{msvc_stl}\fi
+,   morekeywords     = [1]{ ON, OFF, On, Off, on, off, AND, OR, TOLOWER, CACHE, STRING, FILEPATH, FORCE, NAME, APPEND,
+						FALSE, TRUE, STREQUAL, CMAKE_SKIP_BUILD_RPATH, CMAKE_BUILD_WITH_INSTALL_RPATH,
+						CMAKE_INSTALL_RPATH_USE_LINK_PATH, CMAKE_INSTALL_RPATH, SYSTEM, TARGET_FILE,
+						VERSION, FATAL_ERROR, GLOBAL, PROPERTY, USE_FOLDERS, CMAKE_RUNTIME_OUTPUT_DIRECTORY, ALL,
+						CMAKE_LIBRARY_OUTPUT_DIRECTORY, CMAKE_ARCHIVE_OUTPUT_DIRECTORY, BUILD_SHARED_LIBS, NOT, SUBSTRING,
+						MAKE_C_IDENTIFIER, TOUPPER, CMAKE_SIZEOF_VOID_P, EQUAL, DEBUG_POSTFIX, CXX_STANDARD, LINKER_LANGUAGE,
+						POSITION_INDEPENDENT_CODE, CXX_VISIBILITY_PRESET, CXX_EXTENSIONS, MATCHES, BOOL, CONFIG,
+						VERSION_LESS, CMAKE_VERSION, CXX_COMPILER_ID, VERSION_GREATER, CXX_COMPILER_VERSION,
+						PLATFORM_ID, STATUS, MACOSX_BUNDLE, INTERFACE, PUBLIC, PROTECTED, PRIVATE, BUILD_INTERFACE,
+						INSTALL_INTERFACE, ALIAS, PROPERTIES, FOLDER, SOVERSION, EXPORT_FILE_NAME, EXPORT_MACRO_NAME,
+						NOTFOUND, FILE, PREFIX, COMPILERS, FEATURES, RUNTIME, BUNDLE, DESTINATION, COMPONENT,
+						TARGETS, EXPORT, LIBRARY, ARCHIVE, DIRECTORY, NAMESPACE, EXISTS, CPACK_PATH, PATH, GNU, MSVC, Clang,
+						Darwin, OPTIONAL, TARGET, POST_BUILD, RESULT_VARIABLE, AppleClang,
+						CPACK_IGNORE_FILES, CPACK_INSTALLED_DIRECTORIES, CPACK_SOURCE_IGNORE_FILES,
+						CPACK_SOURCE_INSTALLED_DIRECTORIES, CPACK_STRIP_FILES, CPACK_SOURCE_TOPLEVEL_TAG,
+						CPACK_PACKAGE_RELOCATABLE, CPACK_INCLUDE_TOPLEVEL_DIRECTORY,
+						CPACK_COMPONENT_INCLUDE_TOPLEVEL_DIRECTORY, CPACK_SOURCE_PACKAGE_FILE_NAME,
+						CPACK_PACKAGING_INSTALL_PREFIX, CPACK_PACKAGE_NAME, CPACK_PACKAGE_VENDOR,
+						CPACK_PACKAGE_DESCRIPTION_SUMMARY, CPACK_PACKAGE_VERSION, CPACK_PACKAGE_VERSION_MAJOR,
+						CPACK_PACKAGE_VERSION_MINOR, CPACK_PACKAGE_VERSION_PATCH, CPACK_RESOURCE_FILE_LICENSE,
+						CPACK_RESOURCE_FILE_README, CPACK_RESOURCE_FILE_WELCOME, CPACK_PACKAGE_DESCRIPTION_FILE,
+						CPACK_PACKAGE_ICON, CPACK_PACKAGE_FILE_NAME, CPACK_PACKAGE_INSTALL_DIRECTORY,
+						CPACK_PACKAGE_INSTALL_REGISTRY_KEY, CPACK_ARCHIVE_COMPONENT_INSTALL,
+						CPACK_NSIS_INSTALL_ROOT, CPACK_NSIS_MUI_ICON, CPACK_NSIS_MUI_UNIICON, REGEX, REPLACE, 
+						CPACK_DEBIAN_PACKAGE_NAME, CPACK_DEBIAN_PACKAGE_VERSION, CPACK_DEBIAN_PACKAGE_ARCHITECTURE,
+						CPACK_DEBIAN_PACKAGE_MAINTAINER, CPACK_DEBIAN_PACKAGE_DESCRIPTION, CPACK_DEBIAN_PACKAGE_SECTION,
+						CPACK_DEBIAN_PACKAGE_DEPENDS, CPACK_DEBIAN_PACKAGE_PRIORITY, CPACK_DEBIAN_PACKAGE_RECOMMENDS,
+						CPACK_DEBIAN_PACKAGE_SUGGESTS, CPACK_DEB_COMPONENT_INSTALL, CPACK_RPM_PACKAGE_NAME,
+						CPACK_RPM_PACKAGE_VERSION, CPACK_RPM_PACKAGE_RELEASE, CPACK_RPM_PACKAGE_ARCHITECTURE,
+						CPACK_RPM_PACKAGE_VENDOR, CPACK_RPM_PACKAGE_LICENSE, CPACK_RPM_PACKAGE_SUMMARY,
+						CPACK_RPM_PACKAGE_DESCRIPTION, CPACK_RPM_PACKAGE_REQUIRES, CPACK_RPM_PACKAGE_PROVIDES,
+						CPACK_RPM_PACKAGE_GROUP, CPACK_RPM_COMPONENT_INSTALL, CPACK_RPM_PACKAGE_DEBUG, CPACK_RPM_PACKAGE_RELOCATABLE,
+						CPACK_COMPONENTS_ALL,
+						CMAKE_MODULE_PATH, CMAKE_CURRENT_SOURCE_DIR, WRITE, CMAKE_CURRENT_BINARY_DIR, COMMAND, EXCLUDE_FROM_DEFAULT_BUILD,
+						WORKING_DIRECTORY, ARGN, CMAKE_EXPORT_COMPILE_COMMANDS, OUTPUT, DEPENDS, COMMENT, CMAKE_COMMAND,
+						DEFAULT_MSG, optimized, debug, PATHS, PATH_SUFFIXES, DOC, HINTS }
+,	literate         = *
+			{:}{{\lst@ifdisplaystyle\color{msvc_operators}\fi{:}}}{1}
+			{[}{{\lst@ifdisplaystyle\color{msvc_operators}\fi{[}}}{1}
+            {]}{{\lst@ifdisplaystyle\color{msvc_operators}\fi{]}}}{1}
+            {\$\{}{{\lst@ifdisplaystyle\color{msvc_string}\fi{\$\{}}}{1}
+            {\$ENV\{}{{\lst@ifdisplaystyle\color{msvc_string}\fi{\$ENV\{}}}{1}
+            {\}}{{\lst@ifdisplaystyle\color{msvc_string}\fi{\}}}}{1}
+            {\$<}{{\lst@ifdisplaystyle\color{msvc_string}\fi{\$<}}}{1}
+            {>}{{\lst@ifdisplaystyle\color{msvc_string}\fi{>}}}{1}
+,   numberbychapter  = true
+,   numbersep        =  4pt
+,   tabsize          =  4
+,   numbers          = left
+,   numberstyle      = \tiny\color{msvc_linenumber}\noncopynumber
+,   frame            = single
+,   framesep         =  2pt
+,   xleftmargin=\parindent
+,   xleftmargin      = 10pt
+,   framexleftmargin = 10pt
+,   abovecaptionskip = \medskipamount
+,   stepnumber       = 1
+,   columns          = flexible
+,   keepspaces       = true
+,   breaklines       = true
+}

@@ -1,0 +1,66 @@
+
+
+{%
+	\small
+	\linespread{0.8}
+    \centering
+    \begin{tikzpicture}
+    \begin{scope}[node distance = 27pt,every node/.style={inner sep=0,outer sep=0}]
+    \node [data] (problemdata) {};
+    \node [phase,text width=60pt,align=center,text depth=0pt] (preprocessing) [right=of problemdata] {Preprocessing};
+    \node [data] (focusdata) [right=of preprocessing] {};
+    \node [smalldata] (preprocessing-config) [below=8pt of preprocessing] {};
+    \node [phase,align=center] (mapping) [right=of focusdata,text depth=0pt] {Mapping};
+    \node [data] (geometry) [right=of mapping] {};
+    \node [smalldata] (mapping-config) [below=8pt of mapping] {};
+    \node [phase,align=center] (imagesynthesis) [right=of geometry,text depth=0pt] {Image Synthesis};
+    \node [data] (image) [right=of imagesynthesis] {};
+    \node [smalldata] (imagesynthesis-config) [below=8pt of imagesynthesis] {};
+    \node [phase,text width=60pt,align=center,yshift=-4pt] (perception) [below=of imagesynthesis,text depth=1.2\baselineskip] {Perception \& Cognition}; %
+    \node [data] (knowledge) [left=of perception] {};
+    \node [phase,align=center] (exploration) [left=of knowledge,text depth=0pt] {Exploration};
+    \node [data] (config) [left=of exploration] {};
+    \node [phase,align=center] (api) [left=of config] {API};
+    \end{scope}
+    \connectfromdata{problemdata}{preprocessing};
+    \connecttodata{preprocessing}{focusdata};
+    \connectionSmallN{preprocessing-config}{preprocessing-config-center};
+    \draw[draw=black,very thin] (preprocessing-config-center.center) -- (preprocessing);
+    \connectfromdata{focusdata}{mapping};
+    \connecttodata{mapping}{geometry};
+    \connectionSmallN{mapping-config}{mapping-config-center};
+    \draw[draw=black,very thin] (mapping-config-center.center) -- (mapping);
+    \connectfromdata{geometry}{imagesynthesis};
+    \connecttodata{imagesynthesis}{image};
+    \connectionSmallN{imagesynthesis-config}{imagesynthesis-config-center};
+    \draw[draw=black,very thin] (imagesynthesis-config-center.center) -- (imagesynthesis);
+    \connectionS{image}{imagecenter};
+    \draw[draw=black,very thin] (imagecenter.center) |- (perception) node[pos=0.75] (perceptionloop-join) {};
+    \draw[draw=black,very thin] (perception.west) -- (knowledge.east);
+    \connectionW{knowledge}{knowledgecenter};
+    \draw[draw=black,very thin] (knowledgecenter.center) -- (exploration) node[pos=0.5] (perceptionloop-split) {};
+    \draw[draw=black,very thin] (exploration.west) -- (config.east);
+    \draw[draw=black,very thin,->] (perceptionloop-split.center) -- ($(perceptionloop-split)+(0pt,-16pt)$) -- ($(perceptionloop-join)+(0pt,-16pt)$) -- (perceptionloop-join.center);
+    \connectionW{config}{configcenter};
+    \draw[draw=black,very thin] (configcenter.center) -- (api);
+    \draw[draw=black,very thin] (api) -- (preprocessing-config) node[pos=0.90] (preprocessing-config-split) {};
+    \draw[draw=black,very thin] (preprocessing-config-split.center) -| (mapping-config) node[pos=0.5] (mapping-config-split) {};
+    \draw[draw=black,very thin] (mapping-config-split.center) -| (imagesynthesis-config);
+    \node[above=6pt of problemdata,align=center] (problemdatalabel) {Problem Data};
+    \draw [draw=black,very thin,shorten >= -1pt,shorten <= 2pt] (problemdata) -- (problemdatalabel);
+    \node[above=6pt of focusdata,align=center] (focusdatalabel) {Focus Data};
+    \draw [draw=black,very thin,shorten >= -1pt,shorten <= 2pt] (focusdata) -- (focusdatalabel);
+    \node[above=6pt of geometry,align=center,text depth=0pt] (geometrylabel) {Geometry};
+    \draw [draw=black,very thin,shorten >= -1pt,shorten <= 2pt] (geometry) -- (geometrylabel);
+    \node[above=6pt of image,align=center] (imagelabel) {Image};
+    \draw [draw=black,very thin,shorten >= -1pt,shorten <= 2pt] (image) -- (imagelabel);
+    \node[above=6pt of knowledge,align=center,text depth=0pt] (knowledgelabel) {Knowledge};
+    \draw [draw=black,very thin,shorten >= -1pt,shorten <= 2pt] (knowledge) -- (knowledgelabel);
+    \node[above=6pt of config,align=center,text depth=0pt] (configlabel) {Configuration};
+    \draw [draw=black,very thin,shorten >= -1pt,shorten <= 2pt] (config) -- (configlabel);
+    \begin{scope}[on background layer]
+    \node [pipeline,pipelinename=Visualization Pipeline,fill=gray!8] (pipeline) [fit={($(preprocessing.north)+(0pt,1.2\baselineskip)$)(preprocessing.west)(imagesynthesis.east)(imagesynthesis.south)}] {};
+    \node [pipeline,pipelinename=User,fill=gray!8] (user) [fit={($(exploration.north)+(0pt,1.2\baselineskip)$)(exploration.west)(perception.east)(perception.south)}] {};
+    \end{scope}
+    \end{tikzpicture}%
+}%

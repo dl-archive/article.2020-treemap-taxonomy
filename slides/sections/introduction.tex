@@ -1,0 +1,133 @@
+
+\slidesectionwithgraphic{Tree Visualization}{figures/sunburst.png}
+
+\begin{frame}{Tree Visualization}
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.4\textwidth}
+			\textbf{Tree Visualization}
+			\begin{itemize}
+				\setlength{\itemsep}{5pt}
+				\item Visualization of tree-structured data
+				\item Besides relationships of nodes, often numerical or categorical measures are of interest, too.
+				\item Diverse use in information visualization
+			\end{itemize}
+		\end{column}   
+		\begin{column}{0.6\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.9\linewidth]{images/treemap-structure}
+				\caption{Example of a tree-structured dataset with associated weights for leaf nodes and accumulated weights for inner nodes.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Overview of Tree Visualization Techniques}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.0\linewidth,height=0.76\textheight,keepaspectratio]{images/treevis.net.png}
+		\caption{Examples of tree visualization techniques (excerpt from \href{https://treevis.net}{treevis.net} \cite{schulz2011-treevis})}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Problem Statement}
+	\textbf{Problem Statement}\par
+	\begin{itemize}
+		\item When is a visualization technique a treemap?
+		\item What are characteristics of treemaps?
+		\item[]
+		\pause
+		\item Quick answer: it is based \enquote{on the property of containment} \cite{johnson1993-categorical}
+	\end{itemize}
+	\bigskip
+	\bigskip
+	\begin{figure}
+		\centering
+		\only<3|handout:1>{\input{figures/treevis-examples}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Pipeline for Tree Visualization Techniques}
+	\textbf{Tree Visualization Pipeline Model}
+	\begin{itemize}
+		\item Abstract model of a visualization pipeline for tree-structured data with the intend to generate tree visualizations.
+		\item Important concepts are the explicit use of the topology and additional attributes for layouting and geometry processing.
+	\end{itemize}
+	\bigskip
+	\begin{figure}
+		\centering
+		\input{figures/pipeline}
+		\caption{Pipeline model for tree visualization techniques (including treemaps), adopted from \cite{santos2004-gaining}.}
+	\end{figure}
+\end{frame}
+
+\slidesectionwithgraphic{Treemap}{figures/rectangular-map.png}
+
+\begin{frame}{Treemap Visualization Technique}
+	\large
+	\blueify{Treemaps \cite{johnson1991-spacefilling} are used to visualize tree-structured data,}
+	\bigskip
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.5\textwidth}
+			\normalsize
+			e.g., in demographics~\cite{jern2009-choropleth}, business intelligence~\cite{roberts2018-business}, health~\cite{chazard2006-treemaps}, and software development~\cite{merino2018-softvis}.
+			\bigskip
+			\begin{enumerate}
+				\item non-spatial data is spatialized -- it is given a gestalt that preserves the data's structure, e.g., rectangular treemaps use nested rectangles to depict nodes,
+				\item and data (attributes) are mapped to visual variables, i.e., properties of the rectangles (size and color),
+				\item using one or multiple metaphors for value encoding \cite{limberger2019-softwaremaps}
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/treemap-old.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Treemap Characteristics}
+	\begin{columns}[T,onlytextwidth]
+		\begin{column}{0.5\textwidth}
+			\textbf{Characteristics of a Treemap}\par
+			\medskip
+			A visualization technique is called a treemap, especially if:
+			\begin{enumerate}
+				\setlength{\itemsep}{5pt}
+				\item A treemap is a visualization technique suitable to depict tree-structured data.
+				\item There is a representation of the parent-child relationships without use of explicit edge links, i.e.,
+				the containment metaphor \cite{schulz2011-implicit}.
+				\item The depiction of leaf nodes implies an area or
+				volume in the geometry space \cite{park2018-atomgrammar}.
+				\item The representation of sibling nodes should be guaranteed to be non-overlapping \cite{johnson1991-spacefilling}.
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/tierpark-color.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Treemap Layouting Example}
+	\textbf{Basic Treemap Layout Example}\par
+	Leaf nodes are colored and have numerical weights, which can represent any associated attribute, e.g., file size.
+	The weight of a parent node is defined by the sum of the weights of its child nodes.
+	\bigskip
+	\begin{columns}[t]
+	\begin{column}{0.47\textwidth}
+		\centering
+		\blueify{Simple Graph}
+	\end{column}
+	\begin{column}{0.47\textwidth}
+		\centering
+		\blueify{Rectangular Treemap}
+	\end{column}
+	\end{columns}
+	\medskip
+	\centering
+	\only<1|handout:0>{\includegraphics[width=\textwidth]{images/treemap-create-1}}
+	\only<2|handout:0>{\includegraphics[width=\textwidth]{images/treemap-create-2}}
+	\only<3|handout:0>{\includegraphics[width=\textwidth]{images/treemap-create-3}}
+	\only<4|handout:0>{\includegraphics[width=\textwidth]{images/treemap-create-4}}
+	\only<5>{\includegraphics[width=\textwidth]{images/treemap-create-5}}
+\end{frame}

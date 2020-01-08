@@ -1,0 +1,4 @@
+\newsavebox\mybox
+\newenvironment{aquote}[1]
+  {\savebox\mybox{(#1)}\begin{quote}}
+  {\end{quote}\signed{\usebox\mybox}}
