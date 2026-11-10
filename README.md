@@ -4,7 +4,7 @@
 
 *Proceedings of the 15th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications (IVAPP '20)*, February 27–29, 2020, Valletta, Malta. SciTePress, pp. 273–280.
 
-DOI: [10.5220/0009153902730280](https://doi.org/10.5220/0009153902730280) · Author's version: Zenodo *(pending)* · [ResearchGate](https://www.researchgate.net/publication/338402878)
+DOI: [10.5220/0009153902730280](https://doi.org/10.5220/0009153902730280) · Author's version: [Zenodo](https://doi.org/10.5281/zenodo.24121563) · [ResearchGate](https://www.researchgate.net/publication/338402878)
 
 > A treemap is a visualization that has been specifically designed to facilitate the exploration of tree-structured data and, more general, hierarchically structured data.
 > The family of visualization techniques that use a visual metaphor for parent-child relationships based “on the property of containment” (Johnson, 1993) is commonly referred to as treemaps.
