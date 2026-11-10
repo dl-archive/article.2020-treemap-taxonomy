@@ -14,7 +14,7 @@ DOI: [10.5220/0009153902730280](https://doi.org/10.5220/0009153902730280) · Aut
 > With this proposal, we intend to stimulate a discussion on a more unambiguous classification of treemaps and, furthermore, broaden what is understood by the concept of treemap itself.
 
 <p><a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-1.webp" width="24%" alt="page 1"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-2.webp" width="24%" alt="page 2"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-3.webp" width="24%" alt="page 3"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-4.webp" width="24%" alt="page 4"/></a></p>
-<details><summary>All 8 pages</summary><p><a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-5.webp" width="24%" alt="page 5"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-6.webp" width="24%" alt="page 6"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-7.webp" width="24%" alt="page 7"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-8.webp" width="24%" alt="page 8"/></a></p></details>
+<details><summary>Remaining 4 pages</summary><p><a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-5.webp" width="24%" alt="page 5"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-6.webp" width="24%" alt="page 6"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-7.webp" width="24%" alt="page 7"/></a> <a href="scheibel2020-taxonomy-as-submitted.pdf"><img src="preview/page-8.webp" width="24%" alt="page 8"/></a></p></details>
 
 ## Contents
 
